@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Order Page</title>
+    <link rel="stylesheet" type="text/css" href="D:\EDU\110-1-web-programming\Last\last-css-for_order.css">
+    <style>
+      fieldset {background: #fc0}  
+      table {border:5px black solid;
+             border-radius:10px;}
+      </style>
+      <link rel="stylesheet"
+       href="//code.jquery.com/ui/3.6.0/themes/smoothness/jquery-ui.css">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://code.jquery.com/ui/3.6.0/jquery-ui.js"></script>
+      <script>
+          $(function () {
+              $("#order").click(function () {
+                  $("#dialog").dialog("open");
+              });
+          });
+  </script>
+</head>
+
+<body>
+<fieldset>
+<legend align=left style="border:10px solid black" color:white><h1>預約系統</h1></legend>
+
+<hr>
+
+<form>
+
+<p>
+<span>
+<strong>預約者：</strong><input id="person" name="name"type="text" required autofocus placeholder="喵太郎" class="theorder">
+<br>
+</span>
+</p>
+
+<p>
+<span>
+<strong>聯絡電話：</strong>
+<input id="tele" name="tele" type="tel" required placeholder="0912-345-678" class="theorder">
+<br>
+</span>
+</p>
+
+<p>
+<span>
+ <div id="calendar"></div>
+ <td><p><strong>預定日期：</strong></p>
+ <input name="date" type="date" class="theorder">
+<br>
+<script>
+    $('#calendar').datepicker(); 
+</script>
+</span>
+</p>
+
+<p>
+<span>
+ <div id="time"></div>
+ <td><p><strong>預訂時間：</p>
+ <input name="TIME" type="time" class="theorder">
+<br>
+<script>
+    $('#time').timepicker();
+</script>
+</span>
+</p>
+
+<button id="order">確定</button>
+<button id="cancel">清除</button>
+
+<div id="dialog" title="Basic dialog">
+<p>預約者為 + 聯絡電話為： + 預定日期及時間為 </p>
+</div>
+<div id="myDialog" title="確認視窗"></div>
+
+
+
+</body>
+</html>
