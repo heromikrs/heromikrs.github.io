@@ -13,6 +13,18 @@
      
      <p><div class="title"><strong>放送頭美髮</strong></div></p>
 
+     <h2 id="mytime"  style="text-align:right;"></h2> 
+     <script>
+         showTime();  // 呼叫 showTime() 函式
+         
+         function showTime() {
+           var d = new Date();  // 取得日期物件
+           document.getElementById("mytime").innerHTML= 
+                   d.toLocaleTimeString();   // 將目前時間轉成字串後輸出
+           setTimeout(showTime, 1000); // 1 秒後執行 showTime()
+         }
+     </script>
+    
      <div class="menu"><strong>
           <ul>
            <div>
