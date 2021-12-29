@@ -1,60 +1,29 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-    <meta charset="utf-8" />
-    <title>Album</title>
-    <style>
-      body {background-color:#8fbc8f;}
-        div    {clear:left;}
-        .small {
-            width:120px;
-            height:150px;
-            float:left;
-            margin:2px; 
-            padding:2px; 
-            border:3pt ridge #db7093}
-        #big   {width:800px;
-                height:850px; 
-                border:5pt outset #4682b4}
+    <title>Bulletin Board</title>
+
+    <style type="text/css">
+        body  
+       {  padding:0;
+          margin:auto;
+	      background-color: #b0c4de;
+  	      width:100%;
+	      height:100%;}
     </style>
 
-    <script>
-      setInterval(play, 3000);  // 每隔 3 秒呼叫 1 次 play()
-      var index=0;              // 用來控制每次要顯示的圖片索引    
-      
-      function play(){
-        // 取得縮圖的 img 元素集合
-	    var imgs = document.getElementById("thumbs").    // 取得 id="thumbs" 的 div 區塊
-                          getElementsByTagName("img"); // 取得區塊中所有 img 子元素
-        // 取得大圖的 img 元素
-        var bigImg = document.getElementById("big");
-        
-        index++;  // 遞增索引值, 以播下一張照片
-        
-        // 若索引值超過範圍, 則設為0, 表示再重頭開始播放
-        if(index == imgs.length) index=0; 
-        
-        // 將大圖 img 的 src 屬性設為小圖之 src 屬性值
-        bigImg.setAttribute("src", 
-                            imgs[index].getAttribute("src"));
-      }
-    </script>
 </head>
 <body>
-  <h3><b style="font-size:50px">成果區</b><h3>
-
-  <div id="thumbs">
-  <img class="small" src="..\1.jpg">
-  <img class="small" src="..\2.jpg">
-  <img class="small" src="..\3.jpg">
-  <img class="small" src="..\4.jpg">
-  <img class="small" src="..\5.jpg">
-  <img class="small" src="..\6.jpg">
-  </div>
-
-  <div>
-  <img id="big" src="..\1.jpg">
-  </div>
+    <div>
+        <marquee
+        style="font-size:100px;text-align: center;"
+        direction="right" bgcolor="#FFD4D4" onMouseOver="this.stop()" 
+        onMouseOut="this.start()" width="auto" height="150px"  scrollamount="10">
+        <b>
+        今天全店洗頭洗一送一
+        </b>
+      </marquee>
+    </div>
 
 </body>
 </html>
