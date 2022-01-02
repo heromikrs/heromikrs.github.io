@@ -1,82 +1,109 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
     <title>Order Page</title>
-    <link rel="stylesheet" type="text/css" href="..\order.css">
-    <style>
-      fieldset {background: #fc0}  
-      table {border:5px black solid;
-             border-radius:10px;}
-      </style>
+    <link rel="stylesheet" type="text/css" href="./order.css">
+
       <link rel="stylesheet"
        href="//code.jquery.com/ui/3.6.0/themes/smoothness/jquery-ui.css">
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="https://code.jquery.com/ui/3.6.0/jquery-ui.js"></script>
-      <script>
-          $(function () {
-              $("#order").click(function () {
-                  $("#dialog").dialog("open");
-              });
-          });
-  </script>
 </head>
 
 <body>
 <fieldset>
-<legend align=left style="border:10px solid black" color:white><h1>預約系統</h1></legend>
+  <body>
+    <fieldset>
+    <legend align=left style="border:10px solid black" color:white><h1>預約系統</h1></legend>
+    
+    <hr>
+    
+    <form>
+    
+    
+    <p>
+    <span>
+    <strong>預約者：</strong><input id="person" name="name" class="theorder"
+    type="text" required autofocus placeholder="喵太郎" >
+    <span class="ok">ok</span>
+    <br>
+    </span>
+    </p>
 
-<hr>
-
-<form>
-
-<p>
-<span>
-<strong>預約者：</strong><input id="person" name="name"type="text" required autofocus placeholder="喵太郎" class="theorder">
-<br>
-</span>
-</p>
-
-<p>
-<span>
-<strong>聯絡電話：</strong>
-<input id="tele" name="tele" type="tel" required placeholder="0912-345-678" class="theorder">
-<br>
-</span>
-</p>
-
-<p>
-<span>
- <div id="calendar"></div>
- <td><p><strong>預定日期：</strong></p>
- <input name="date" type="date" class="theorder">
-<br>
-<script>
-    $('#calendar').datepicker(); 
-</script>
-</span>
-</p>
-
-<p>
-<span>
- <div id="time"></div>
- <td><p><strong>預訂時間：</p>
- <input name="TIME" type="time" class="theorder">
-<br>
-<script>
-    $('#time').timepicker();
-</script>
-</span>
-</p>
-
-<button id="order">確定</button>
-<button id="cancel">清除</button>
-
-<div id="dialog" title="Basic dialog">
-<p>預約者為 + 聯絡電話為： + 預定日期及時間為 </p>
-</div>
-<div id="myDialog" title="確認視窗"></div>
-
-
+    
+    <p>
+    <span>
+    <strong>聯絡電話：</strong>
+    <input id="tele" name="tele" type="tel" required placeholder="0912-345-678" class="theorder">
+    <span class="ok">ok</span>
+    <br>
+    </span>
+    </p>
+    
+    <p>
+     <div></div>
+     <td><p><strong>預定日期：</strong></p>
+     <input id="calendar" name="date" type="date" class="theorder">
+     <span class="ok">ok</span>
+    <br>
+    <script>
+        $('#calendar').datepicker(); 
+    </script>
+    </p>
+    
+    <p>
+     <div></div>
+     <td><p><strong>預訂時間：</p>
+     <input id="time" name="TIME" type="time" class="theorder">
+     <span class="ok">ok</span>
+    <br>
+    <script>
+        $('#time').timepicker();
+    </script>
+    </p>
+    
+    <button id="order">確定</button>
+    <button id="cancel">清除</button>
+    
+    <script type="text/javascript">
+        var name=document.getElementById("person");
+        var num=document.getElementById("tele");
+        var da=document.getElementById("calendar");
+        var ti=document.getElementById("time");
+        var nawr=0, nuwr=0, dawr=0, tiwr=0;
+        
+        // 用匿名函式設定 '清除' 鈕的動作
+        document.getElementById("cancel").onclick = 
+          function (){
+              name.value=0;
+              num.value=0;
+              da.value=0;
+              ti.value=0;
+              nawr=0;
+              nuwr=0;
+              dawr=0; 
+              tiwr=0;
+          };
+        
+        // 用匿名函式設定 '訂購' 鈕的動作
+        var btnOrder =document.getElementById("order").onclick=
+          function (){
+              var name=document.getElementById("person").value;
+              var num=document.getElementById("tele").value;
+              var da=document.getElementById("calendar").value;
+              var ti=document.getElementById("time").value;
+              if(name==0) return;
+              else if(num==0) return;
+              else if(da==0) return;
+              else if(ti==0) return;    // 為 0 時不處理
+              var msg="";
+              if(nawr==0) msg += "訂購者："  + name +"；";
+              if(nuwr==0) msg += "連絡電話："  + num +"；";
+              if(dawr==0) msg += "預定日期："  + da +"；";
+              if(tiwr==0) msg += "預定時間："  + ti 
+              alert(msg);
+          }
+    </script>    
 
 </body>
 </html>
