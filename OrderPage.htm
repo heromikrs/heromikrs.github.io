@@ -65,12 +65,99 @@
     <button id="order">確定</button>
     <button id="cancel">清除</button>
     
-    <script type="text/javascript">
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+        
+        const firebaseConfig = {
+    apiKey: "AIzaSyCPLgV8D_qfR-G1U51WN1wdXBX9L_-s91E",
+    authDomain: "last-110.firebaseapp.com",
+    databaseURL: "https://last-110-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "last-110",
+    storageBucket: "last-110.appspot.com",
+    messagingSenderId: "48692155043",
+    appId: "1:48692155043:web:fca0bef4dd869c90a56516"
+  };
+      
+        const app = initializeApp(firebaseConfig);
+
+        import {getDatabase, ref, get, set, child, update, remove}
+        from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+        const db = getDatabase(app);
+        
         var name=document.getElementById("person");
         var num=document.getElementById("tele");
         var da=document.getElementById("calendar");
         var ti=document.getElementById("time");
         var nawr=0, nuwr=0, dawr=0, tiwr=0;
+        
+        var odBtn = document.getElementById('order');
+        var ccBtn = document.getElementById('cancel');v
+        
+        function InsertData(){
+            set(ref(db, 'TheNumber/' + num.value),{
+                NameOfG: name.value,
+                NameOfG: num.value,
+                date: da.value,
+                time: ti.value
+            })
+            .then(()=>{
+                alert('data stored sucessfully');
+            })
+            .catch((error)=>{
+                alert('unsuccessful, error' + error);
+            });
+        }
+
+        function SelectData(){
+            const dbref = ref(db);
+
+            get(child(dbref, 'TheNumber/' + num.value))
+            .then((snapshot)=>{
+                if(snapshot.exists()){
+                    name.value = snapshot.val().NameOfG;
+                    num.value = snapshot.val().NameOfG;
+                    da.value = snapshot.val().date;
+                    ti.value = snapshot.val().time;
+                }
+                else{
+                    alert('No Data Found');
+                }
+            })
+            .catch((error)=>{
+                alert('unsuccessful, error' + error);
+            })
+        }
+
+        function UpdateData(){
+            update(ref(db, 'TheNumber/' + num.value),{
+                NameOfG: name.value,
+                NameOfG: num.value,
+                date: da.value,
+                time: ti.value
+            })
+            .then(()=>{
+                alert('data updated sucessfully');
+            })
+            .catch((error)=>{
+                alert('unsuccessful, error' + error);
+            });
+        }
+
+        function DeleteData(){
+            remove(ref(db,'TheNumber/' + num.value))
+            .then(()=>{
+                alert('data remove sucessfully');
+            })
+            .catch((error)=>{
+                alert('unsuccessful, error' + error);
+            });
+        }
+
+        insBtn.addEventListener('click', InsertData);
+        selBtn.addEventListener('click', SelectData);
+        updBtn.addEventListener('click', UpdateData);
+        delBtn.addEventListener('click', DeleteData);
         
         // 用匿名函式設定 '清除' 鈕的動作
         document.getElementById("cancel").onclick = 
