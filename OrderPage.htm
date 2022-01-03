@@ -64,17 +64,18 @@
     
     <button id="order">確定</button>
     <button id="cancel">清除</button>
-         
-     var name=document.getElementById("person");
+             
+      
+    <script type="module">
+        var name=document.getElementById("person");
         var num=document.getElementById("tele");
         var da=document.getElementById("calendar");
         var ti=document.getElementById("time");
         var nawr=0, nuwr=0, dawr=0, tiwr=0;
-        
         var odBtn = document.getElementById('order');
         var ccBtn = document.getElementById('cancel');
-         
-          // 用匿名函式設定 '清除' 鈕的動作
+        
+            // 用匿名函式設定 '清除' 鈕的動作
         document.getElementById("cancel").onclick = 
           function (){
               name.value=0;
@@ -105,7 +106,6 @@
               if(tiwr==0) msg += "預定時間："  + ti 
               alert(msg);
     
-    <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         
         const firebaseConfig = {
