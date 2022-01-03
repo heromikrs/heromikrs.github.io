@@ -72,7 +72,38 @@
         var nawr=0, nuwr=0, dawr=0, tiwr=0;
         
         var odBtn = document.getElementById('order');
-        var ccBtn = document.getElementById('cancel');v
+        var ccBtn = document.getElementById('cancel');
+         
+          // 用匿名函式設定 '清除' 鈕的動作
+        document.getElementById("cancel").onclick = 
+          function (){
+              name.value=0;
+              num.value=0;
+              da.value=0;
+              ti.value=0;
+              nawr=0;
+              nuwr=0;
+              dawr=0; 
+              tiwr=0;
+          };
+        
+        // 用匿名函式設定 '訂購' 鈕的動作
+        var btnOrder =document.getElementById("order").onclick=
+          function (){
+              var name=document.getElementById("person").value;
+              var num=document.getElementById("tele").value;
+              var da=document.getElementById("calendar").value;
+              var ti=document.getElementById("time").value;
+              if(name==0) return;
+              else if(num==0) return;
+              else if(da==0) return;
+              else if(ti==0) return;    // 為 0 時不處理
+              var msg="";
+              if(nawr==0) msg += "訂購者："  + name +"；";
+              if(nuwr==0) msg += "連絡電話："  + num +"；";
+              if(dawr==0) msg += "預定日期："  + da +"；";
+              if(tiwr==0) msg += "預定時間："  + ti 
+              alert(msg);
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
@@ -159,36 +190,7 @@
         updBtn.addEventListener('click', UpdateData);
         delBtn.addEventListener('click', DeleteData);
         
-        // 用匿名函式設定 '清除' 鈕的動作
-        document.getElementById("cancel").onclick = 
-          function (){
-              name.value=0;
-              num.value=0;
-              da.value=0;
-              ti.value=0;
-              nawr=0;
-              nuwr=0;
-              dawr=0; 
-              tiwr=0;
-          };
-        
-        // 用匿名函式設定 '訂購' 鈕的動作
-        var btnOrder =document.getElementById("order").onclick=
-          function (){
-              var name=document.getElementById("person").value;
-              var num=document.getElementById("tele").value;
-              var da=document.getElementById("calendar").value;
-              var ti=document.getElementById("time").value;
-              if(name==0) return;
-              else if(num==0) return;
-              else if(da==0) return;
-              else if(ti==0) return;    // 為 0 時不處理
-              var msg="";
-              if(nawr==0) msg += "訂購者："  + name +"；";
-              if(nuwr==0) msg += "連絡電話："  + num +"；";
-              if(dawr==0) msg += "預定日期："  + da +"；";
-              if(tiwr==0) msg += "預定時間："  + ti 
-              alert(msg);
+       
           }
     </script>    
 
