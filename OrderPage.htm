@@ -64,6 +64,15 @@
     
     <button id="order">確定</button>
     <button id="cancel">清除</button>
+         
+     var name=document.getElementById("person");
+        var num=document.getElementById("tele");
+        var da=document.getElementById("calendar");
+        var ti=document.getElementById("time");
+        var nawr=0, nuwr=0, dawr=0, tiwr=0;
+        
+        var odBtn = document.getElementById('order');
+        var ccBtn = document.getElementById('cancel');v
     
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
@@ -84,16 +93,7 @@
         from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
         const db = getDatabase(app);
-        
-        var name=document.getElementById("person");
-        var num=document.getElementById("tele");
-        var da=document.getElementById("calendar");
-        var ti=document.getElementById("time");
-        var nawr=0, nuwr=0, dawr=0, tiwr=0;
-        
-        var odBtn = document.getElementById('order');
-        var ccBtn = document.getElementById('cancel');v
-        
+                
         function InsertData(){
             set(ref(db, 'TheNumber/' + num.value),{
                 NameOfG: name.value,
